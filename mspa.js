@@ -86,6 +86,16 @@ function centaursTesticle(line) {
   return line;
 }
 
+// Functions to show/hide the mangled and original versions of text lines.
+function showOrig() {
+  this.getElementsByClassName('orighover')[0].style.display="";
+  this.getElementsByClassName('mangled')[0].style.display="none";
+};
+function showMangled(msg) {
+  this.getElementsByClassName('orighover')[0].style.display="none";
+  this.getElementsByClassName('mangled')[0].style.display="";
+};
+
 function fixChats() {
   var pesterlog = findPesterRoot();
   if (!pesterlog) {
@@ -135,8 +145,13 @@ function fixChats() {
       default:
           continue;
     }
-    msg.innerHTML = speaker + line;
+    msg.innerHTML = '<span class="mangled">' + speaker + line + '</span>' +
+        '<span class="orighover" style="display:none;">' +
+        msg.innerHTML + '</span>';
+    msg.onmouseover = showOrig;
+    msg.onmouseout = showMangled;
   }
-}
+};
+
 
 fixChats();
