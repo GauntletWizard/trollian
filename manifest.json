@@ -11,7 +11,8 @@
       "matches" : ["http://www.mspaintadventures.com/*"],
       "js" : [ "mspa.js" ],
       "run_at" : "document_idle",
-      "all_frames" : false
+      "all_frames" : false,
+      "css": [ "mspa.css" ]
     }
   ]
 }

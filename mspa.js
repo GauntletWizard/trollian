@@ -71,6 +71,20 @@ function grimAuxiliatrix(line) {
   // line = line.toLowerCase();
   return line;
 }
+function arsenicCatnip(line) {
+  // Also known as Nepeta Leijon
+  line = ":" + line.slice(10);
+  //line = line.replace(/:33\ \< /, ' '); // Gack.
+  line = line.replace(/3/g, 'e');
+  return line;
+}
+function centaursTesticle(line) {
+  line = ":" + line.slice(10);
+  line = line.replace(/0/g, 'o');
+  line = line.replace(/1/g, 'l');
+  line = line.replace(/%/g, 'x');
+  return line;
+}
 
 function fixChats() {
   var pesterlog = findPesterRoot();
@@ -111,6 +125,12 @@ function fixChats() {
           break;
       case "GA":
           line = grimAuxiliatrix(line);
+          break;
+      case "AC":
+          line = arsenicCatnip(line);
+          break;
+      case "CT":
+          line = centaursTesticle(line);
           break;
       default:
           continue;
