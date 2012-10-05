@@ -1,5 +1,5 @@
 /**
- * @fileoverview Description of this file.
+ * This makes the text of trollchats readable.
  */
 
 function swapCase(str) {
@@ -18,6 +18,7 @@ function findPesterRoot() {
   var spoilerwin = document.getElementsByClassName("spoiler")[0];
   if (spoilerwin) {
     spoilerwin.style.display = "";
+    spoilerwin.parentNode.children[0].style.display = "None";
     var chats = spoilerwin.children[1].children[0].children[0].children[0].children[0].children
     return chats
   }
@@ -49,8 +50,25 @@ function adiosToreador(line) {
   return line;
 }
 function arachnidsGrip(line) {
-  line = line.replace(/8/g, "b");
+  line = line.replace(/h8/g, 'hate');
+  line = line.replace(/8/g, 'b');
   line = line.replace(/iiiiiiii/g, 'i');
+  // I think this one's cute.
+  // line = line.replace(/::::)/g, ':)');
+  return line;
+}
+function terminallyCapricious(line) {
+  line = line.toLowerCase();
+  return line;
+}
+function apocalypseArisen(line) {
+  // Also known as Aradia Megido
+  line = line.replace(/0/g, 'o');
+  return line;
+}
+function grimAuxiliatrix(line) {
+  // I Can Survive Having Every Word Capitalized. I've Done CamelCase.
+  // line = line.toLowerCase();
   return line;
 }
 
@@ -61,29 +79,44 @@ function fixChats() {
   }
   for (l = 0; l < pesterlog.length; l++) {
     msg = pesterlog[l];
-    line = msg.innerHTML;
+    line = msg.innerHTML.slice(2);
     var speaker = msg.innerHTML.substring(0,2);
+    // TODO: Display original formatting on hover.
     switch (speaker) {
       case "GC":
       case "gc":
-          msg.innerHTML = gallowsCalibrator(msg.innerHTML);
+          line = gallowsCalibrator(line);
           break;
       case "TA":
       case "ta":
-          msg.innerHTML = twinArmageddons(msg.innerHTML);
+          line = twinArmageddons(line);
           break;
       case "CG":
       case "cg":
-          msg.innerHTML = carcinoGeneticist(msg.innerHTML);
+          line = carcinoGeneticist(line);
           break;
       case "AT":
       case "at":
-          msg.innerHTML = adiosToreador(msg.innerHTML);
+          line = adiosToreador(line);
           break;
       case "AG":
       case "ag":
-          msg.innerHTML = arachnidsGrip(line);
+          line = arachnidsGrip(line);
           break;
+      case "TC":
+          line = terminallyCapricious(line);
+          break;
+      case "AA":
+          line = apocalypseArisen(line);
+          break;
+      case "GA":
+          line = grimAuxiliatrix(line);
+          break;
+      default:
+          continue;
     }
+    msg.innerHTML = speaker + line;
   }
 }
+
+fixChats();
