@@ -1,5 +1,15 @@
 /**
  * This makes the text of trollchats readable.
+ *
+ * Reference: http://mspaintadventures.wikia.com/wiki/Typing_Quirk
+ *
+ * ==UserScript==
+ * @name Trollian
+ * @description Makes the text of trollchats readable.
+ * @version 1
+ * @downloadURL https://raw.github.com/GauntletWizard/trollian/master/mspa.js
+ * @include http://www.mspaintadventures.com/*
+ * ==/UserScript==
  */
 
 function swapCase(str) {
@@ -14,6 +24,28 @@ function swapCase(str) {
   return swapped.join("");
 }
 
+// This is stupid, and doesn't work. I'm leaving TC as just toLowerCase.
+function stickyCase(str) {
+  var swapped = [];
+  for (var i =0; i < str.length; i++) {
+    if (i % 2) {
+      if (str.charCodeAt(i) < 96) {
+        swapped[i] = str.charAt(i).toLowerCase();
+      } else {
+        swapped[i] = str.charAt(i).toUpperCase();
+      }
+    } else {
+      if (str.charCodeAt(i) < 96) {
+        swapped[i] = str.charAt(i).toLowerCase();
+      } else {
+        swapped[i] = str.charAt(i).toUpperCase();
+      }
+    }
+  }
+  return swapped.join("");
+}
+
+// Finds the root of the pesterlog, as well as causes it to be displayed.
 function findPesterRoot() {
   var spoilerwin = document.getElementsByClassName("spoiler")[0];
   if (spoilerwin) {
@@ -25,14 +57,14 @@ function findPesterRoot() {
 }
 
 function twinArmageddons(line) {
-  //Also known as Sollux Captor
+  // Also known as Sollux Captor
   line = line.replace(/two/g, 'to');
   line = line.replace(/ii/g, 'i');
   line = line.replace(/2/g, 's');
   return line;
 }
 function gallowsCalibrator(line) {
-  //Also known as Terezi Pyrope
+  // Also known as Terezi Pyrope
   line = line.toLowerCase();
   line = line.replace(/3/g, 'e');
   line = line.replace(/4/g, 'a');
@@ -40,17 +72,22 @@ function gallowsCalibrator(line) {
   return line;
 }
 function carcinoGeneticist(line) {
-  //Also known as Karkat Vantas
+  // Also known as Karkat Vantas
   line = line.toLowerCase();
   return line;
 }
 function adiosToreador(line) {
-  //Also known as Tavros Nitram
+  // Also known as Tavros Nitram
   line = swapCase(line);
   return line;
 }
 function arachnidsGrip(line) {
+  // Also known as Vriska
+  //Goddamnit, Vriska, why is your letter usage overloaded?
+  line = line.replace(/cheapsk8/g, 'cheapskate');
+  line = line.replace(/8l8tant/g, 'blatant');
   line = line.replace(/h8/g, 'hate');
+  line = line.replace(/8n't/g, 'ain\'t');
   line = line.replace(/8/g, 'b');
   line = line.replace(/iiiiiiii/g, 'i');
   // I think this one's cute.
@@ -85,6 +122,19 @@ function centaursTesticle(line) {
   line = line.replace(/%/g, 'x');
   return line;
 }
+
+function caligulasAquarium(line) {
+  // Eridan Ampora
+  line = line.replace(/ww/g, 'w');
+  line = line.replace(/vv/g, 'v');
+  return line;
+}
+
+function cuttlefishCuller(line) {
+  line = line.replace(/\)\(/g, 'h');
+  return line;
+}
+
 
 // Functions to show/hide the mangled and original versions of text lines.
 function showOrig() {
@@ -141,6 +191,12 @@ function fixChats() {
           break;
       case "CT":
           line = centaursTesticle(line);
+          break;
+      case "CC":
+          line = cuttlefishCuller(line);
+          break;
+      case "CA":
+          line = caligulasAquarium(line);
           break;
       default:
           continue;
