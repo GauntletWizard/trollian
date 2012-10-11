@@ -153,6 +153,9 @@ function fixChats() {
   }
   for (l = 0; l < pesterlog.length; l++) {
     msg = pesterlog[l];
+    if (msg.style.color == "rgb(255, 255, 255)") {
+      msg.style.backgroundColor = "#000000";
+    }
     line = msg.innerHTML.slice(2);
     var speaker = msg.innerHTML.substring(0,2);
     // TODO: Display original formatting on hover.
