@@ -7,4 +7,11 @@ It's being developed as I read through the story, so characters basically are im
 
 One day, maybe, I will post this to the chrome store. Later, that.
 
+### Installation
+
+*  Check out this git repo
+*  Follow the Chrome browser instructions for [loading an unpacked extension](http://developer.chrome.com/extensions/getstarted.html#load)
+
+### Copyright
+
 All rights reassigned to Andrew Hussie.
