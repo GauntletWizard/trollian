@@ -60,7 +60,7 @@ function twinArmageddons(line) {
   // Also known as Sollux Captor
   line = line.replace(/two/g, 'to');
   line = line.replace(/ii/g, 'i');
-  line = line.replace(/2/g, 's');
+  line = line.replace(/(\D)2(\D)/g , '$1s$2');
   return line;
 }
 function gallowsCalibrator(line) {
