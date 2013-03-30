@@ -4,7 +4,8 @@
   "manifest_version": 2,
   "description": "Makes the trollchats readable.",
   "permissions": [
-    "http://www.mspaintadventures.com/"
+    "http://www.mspaintadventures.com/",
+    "http://www.oglaf.com/"
   ],
   "content_scripts" : [
     {
@@ -13,6 +14,12 @@
       "run_at" : "document_idle",
       "all_frames" : false,
       "css": [ "mspa.css" ]
+    },
+    {
+      "matches" : ["http://www.oglaf.com/*"],
+      "js": [ "oglaf.js" ],
+      "run_at": "document_end",
+      "all_frames" : false
     }
   ]
 }

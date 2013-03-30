@@ -87,6 +87,7 @@ function arachnidsGrip(line) {
   line = line.replace(/cheapsk8/g, 'cheapskate');
   line = line.replace(/8l8tant/g, 'blatant');
   line = line.replace(/h8/g, 'hate');
+  line = line.replace(/gr8/g, 'great');
   line = line.replace(/8n't/g, 'ain\'t');
   line = line.replace(/8/g, 'b');
   line = line.replace(/iiiiiiii/g, 'i');
@@ -116,6 +117,7 @@ function arsenicCatnip(line) {
   return line;
 }
 function centaursTesticle(line) {
+  // Also known as Equius Zahhak
   line = ":" + line.slice(10);
   line = line.replace(/0/g, 'o');
   line = line.replace(/1/g, 'l');
